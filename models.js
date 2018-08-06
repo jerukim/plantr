@@ -35,16 +35,33 @@ const vegetableDates = [
   Date.now()
 ];
 
-for (let i = 0; i < 5; i++) {
-  Vegetable.create({
-    name: vegetableNames[i],
-    color: vegetableColors[i],
-    planted_on: vegetableDates[i]
+(async () => {
+  const veggie = await Vegetable.create({
+    name: 'eggplant',
+    color: 'purple',
+    planted_on: Date.now()
   })
-    .then()
-    .catch(() => {
-      console.log(`${vegetableNames[i]} failed!`);
-    });
-}
+})();
+
+// Vegetable.create({
+//   name: 'eggplant',
+//   color: 'purple',
+//   planted_on: Date.now()
+// }).then((row) => {
+//   db.sync();
+// }).catch()
+
+// for (let i = 0; i < 5; i++) {
+//   Vegetable.create({
+//     name: vegetableNames[i],
+//     color: vegetableColors[i],
+//     planted_on: vegetableDates[i]
+//   })
+//     .then()
+//     .then()
+//     .catch((er) => {
+//       console.log(`${vegetableNames[i]} failed!`, er);
+//     });
+// }
 
 module.exports = db;
